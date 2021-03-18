@@ -88,4 +88,13 @@ Open your database in phpMyAdmin then select SQL and create a new (or more) quer
 
 `php artisan make:controller --resource NameController` <- PascalCase
 
+--------------------------------------------------------------------
+## CONNECTING DATABASE (database/migrations)
+
+Open routes/web.php and add:
+
+`Route::resource('/name', 'NameController');`
+
+
+
 
