@@ -39,6 +39,12 @@ then
 
 `npm install`
 
+then
+
+open .blade.php file and add
+
+`<link rel="stylesheet" href="{{ asset('css/app.css')}}">`
+
 --------------------------------------------------------------------
 
 ## CREATING A NEW EMPTY DATABASE
