@@ -86,6 +86,6 @@ Open your database in phpMyAdmin then select SQL and create a new (or more) quer
 --------------------------------------------------------------------
 ## MAKING A CONTROLLER WITH --resource (CRUD)
 
-
+`php artisan make:controller --resource NameController` <- PascalCase
 
 
