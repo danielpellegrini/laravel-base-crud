@@ -10002,3 +10002,32 @@ h3 {
     border-color: #dee2e6;
   }
 }
+p, h5 {
+  font-size: 0.7em;
+  font-weight: bolder;
+}
+p span, h5 span {
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+.card {
+  margin: 0 auto;
+}
+.card img {
+  width: 24.9rem;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 1.3em;
+}
+body h1 {
+  padding: 15px;
+}
+body .image img {
+  width: 150px;
+  border-radius: 10px;
+}

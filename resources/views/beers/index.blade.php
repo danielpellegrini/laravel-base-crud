@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-    <title>Beers list</title>
-</head>
-<body>
+@extends('layout')
 
-    <table class="table table-hover">
+@section('title', 'Index')
+@section('content')
+
+
+
+
+<h1 class="text-center">BBE Best Brewery Ever</h1>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">id#</th>
@@ -21,27 +20,28 @@
       <th scope="col">Alcohol</th>
       <th scope="col">IBU</th>
       <th scope="col">SRM</th>
+      <th scope="col"></th>
       <th scope="col">Image</th>
     </tr>
   </thead>
   <tbody>
-      @foreach ($beers as $beer)
-      <tr>
-        <th scope="row">{{ $beer->id }}</th>
-        <td>{{ $beer->name }}</td>
-        <td>{{ $beer->origin_country }}</td>
-        <td>{{ $beer->appearance }}</td>
-        <td>{{ $beer->aroma }}</td>
-        <td>{{ $beer->flavor }}</td>
-        <td>{{ $beer->alcohol }}</td>
-        <td>{{ $beer->ibu }}</td>
-        <td>{{ $beer->srm }}</td>
-        <td><img src="{{ $beer->image }}" alt="beer!" width="100"></td>
+    @foreach ($beers as $beer)
+    <tr>
+      <th scope="row">{{ $beer->id }}</th>
+      <td><a href="{{ route('beers.show', compact('beer')) }}">{{ $beer->name }}</a></td>
+      <td>{{ $beer->origin_country }}</td>
+      <td>{{ $beer->appearance }}</td>
+      <td>{{ $beer->aroma }}</td>
+      <td>{{ $beer->flavor }}</td>
+      <td>{{ $beer->alcohol }}%</td>
+      <td>{{ $beer->ibu }}</td>
+      <td>{{ $beer->srm }}</td>
+      <td></td>
+      <td class="image"><img src="{{ $beer->image }}" alt="beer!"></td>
 
-      </tr>
-      @endforeach
+    </tr>
+    @endforeach
   </tbody>
 </table>
 
-</body>
-</html>
+@endsection
