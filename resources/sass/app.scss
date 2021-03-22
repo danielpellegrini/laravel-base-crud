@@ -7,30 +7,38 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Fontawesome
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 // Partials
 @import 'show';
 
 body {
 
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-size: 1.3em;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 1.3em;
+
+  .container {
+
+    max-width: 100%;
 
     h1 {
-        padding: 15px;
+      padding: 15px;
     }
 
 
-    .image{
+    .image {
 
-        img {
-            width: 150px;
-            border-radius: 10px;
-        }
+      img {
+        width: 150px;
+        border-radius: 10px;
+      }
 
     }
+
+
+  }
 
 }
-
-

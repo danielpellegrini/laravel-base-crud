@@ -22,6 +22,7 @@
       <th scope="col">SRM</th>
       <th scope="col"></th>
       <th scope="col">Image</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,12 @@
       <td>{{ $beer->srm }}</td>
       <td></td>
       <td class="image"><img src="{{ $beer->image }}" alt="beer!"></td>
+      <td>
+        <a href="{{ route('beers.create', compact('beer')) }}"><i class="fas fa-plus"></i></a>
+        <a href="{{ route('beers.show', compact('beer')) }}"><i class="fas fa-eye"></i></a>
+        <a href="{{ route('beers.edit', compact('beer')) }}"><i class="fas fa-edit"></i></a>
+        <a href="{{ route('beers.destroy', compact('beer')) }}"><i class="fas fa-trash-alt"></i></a>
+      </td>
 
     </tr>
     @endforeach

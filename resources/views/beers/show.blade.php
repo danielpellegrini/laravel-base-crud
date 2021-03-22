@@ -14,7 +14,8 @@
     <p class="card-text">Alcohol: <span>{{$beer->alcohol}}%</span></p>
     <p class="card-text">International Bitterness Units: <span>{{$beer->ibu}}</span></p>
     <p class="card-text">Standard Reference Method(color): <span>{{$beer->srm}}</span></p>
-    <a href="#" class="btn btn-primary">Edit</a>
+    <a href="{{ route('beers.edit', compact('beer')) }}" class="btn btn-primary"><i class="fas fa-edit">Edit</i></a>
+    <a href="{{ route('beers.destroy', compact('beer')) }}" class="btn btn-danger"><i class="fas fa-trash-alt">Delete</i></a>
   </div>
 </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Beer;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class BeerController extends Controller
@@ -36,17 +37,28 @@ class BeerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|between:3,45',
+            'origin_country' => 'required|between:3,45',
+            'appearance' => 'nullable|between:3,50',
+            'aroma' => 'nullable|between:3,50',
+            'flavor' => 'nullable|between:3,50',
+            'alcohol' => 'required|numeric|between:1,99.9',
+            'ibu' => 'nullable|numeric|between:1,100.0',
+            'srm' => 'nullable|numeric|between:1,60',
+            'image' => 'required|between:0,2048'
+        ]);
+
         $data = $request->all();
 
         $beer = new Beer();
         $beer->fill($data);
 
-
         // LONGER VERSION
 
         // $beer = new Beer();
         // $beer->name = $data['name'];
-        // $beer->origin_country = $data['origin-country'];
+        // $beer->origin_country = $data['origin_country'];
         // $beer->appearance = $data['appearance'];
         // $beer->aroma = $data['aroma'];
         // $beer->flavor = $data['flavor'];
@@ -76,6 +88,7 @@ class BeerController extends Controller
     // }
 
     // SHORTER VERSION
+
     /**
      * Display the specified resource.
      *
@@ -91,24 +104,29 @@ class BeerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Beer  $beer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Beer $beer)
     {
-        //
+        // dd($beer);
+        return view('beers.edit', compact('beer'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $beer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Beer $beer)
     {
-        //
+        $data = $request->all();
+        // validation
+        $beer->update($data); // similar to $beer->fill in store
+
+        return redirect()->route('beers.show', compact('beer'));
     }
 
     /**
