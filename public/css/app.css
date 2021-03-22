@@ -10024,6 +10024,7 @@ p span, h5 span {
 }
 
 body {
+  background-color: none;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -10031,6 +10032,7 @@ body {
 }
 body .container {
   max-width: 100%;
+  margin-bottom: 200px;
 }
 body .container h1 {
   padding: 15px;

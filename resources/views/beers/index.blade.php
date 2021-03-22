@@ -37,18 +37,36 @@
       <td>{{ $beer->alcohol }}%</td>
       <td>{{ $beer->ibu }}</td>
       <td>{{ $beer->srm }}</td>
-      <td></td>
+      <td>
+      </td>
       <td class="image"><img src="{{ $beer->image }}" alt="beer!"></td>
       <td>
-        <a href="{{ route('beers.create', compact('beer')) }}"><i class="fas fa-plus"></i></a>
         <a href="{{ route('beers.show', compact('beer')) }}"><i class="fas fa-eye"></i></a>
         <a href="{{ route('beers.edit', compact('beer')) }}"><i class="fas fa-edit"></i></a>
-        <a href="{{ route('beers.destroy', compact('beer')) }}"><i class="fas fa-trash-alt"></i></a>
+
+        <form action="{{ route('beers.destroy', compact('beer')) }}" method="post">
+            @csrf
+            @method('DELETE')
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter{{$beer->id }}" >
+                <i class="fas fa-trash-alt"></i>
+            </button>
+
+            @include('beers.modal',['beer'=> $beer->id])
+        </form>
+
       </td>
+
 
     </tr>
     @endforeach
   </tbody>
 </table>
+
+<div class="mb-3">
+  <a href="{{ route('beers.create', compact('beer')) }}" class="btn btn-success"><i class="fas fa-plus"> Add</i></a>
+</div>
+
+
 
 @endsection

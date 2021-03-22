@@ -100,6 +100,7 @@
 
 
     <div class="mb-3">
+        <a href="{{ route('beers.index', compact('beer')) }}" class="btn btn-danger"><i class="fas fa-undo">Undo</i></a>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
     </form>

@@ -5,7 +5,7 @@
 
     <h1>Insert a new beer</h1>
 
-    <form class="needs-validation" action="{{route('beers.store')}}" method="post" novalidate>
+    <form class="needs-validation" action="{{ route('beers.store') }}" method="post" novalidate>
     @csrf
     @method('POST')
 
@@ -93,6 +93,7 @@
 
 
     <div class="mb-3">
+        <a href="{{ route('beers.index', compact('beer')) }}" class="btn btn-danger"><i class="fas fa-undo">Undo</i></a>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
     </form>

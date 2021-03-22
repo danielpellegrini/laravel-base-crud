@@ -24,9 +24,10 @@ class BeerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Beer $beer)
     {
-        return view('beers.create');
+        // return view('beers.create');
+        return view('beers.create', compact('beer'));
     }
 
     /**
@@ -43,7 +44,7 @@ class BeerController extends Controller
             'appearance' => 'nullable|between:3,50',
             'aroma' => 'nullable|between:3,50',
             'flavor' => 'nullable|between:3,50',
-            'alcohol' => 'required|numeric|between:1,99.9',
+            'alcohol' => 'required|numeric|between:1,80',
             'ibu' => 'nullable|numeric|between:1,100.0',
             'srm' => 'nullable|numeric|between:1,60',
             'image' => 'required|between:0,2048'
@@ -135,8 +136,10 @@ class BeerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Beer $beer)
     {
-        //
+        $beer->delete();
+
+        return redirect()->route('beers.index');
     }
 }
