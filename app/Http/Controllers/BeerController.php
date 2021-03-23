@@ -38,6 +38,7 @@ class BeerController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|between:3,45',
             'origin_country' => 'required|between:3,45',
@@ -54,25 +55,10 @@ class BeerController extends Controller
 
         $beer = new Beer();
         $beer->fill($data);
-
-        // LONGER VERSION
-
-        // $beer = new Beer();
-        // $beer->name = $data['name'];
-        // $beer->origin_country = $data['origin_country'];
-        // $beer->appearance = $data['appearance'];
-        // $beer->aroma = $data['aroma'];
-        // $beer->flavor = $data['flavor'];
-        // $beer->alcohol = $data['alcohol'];
-        // $beer->ibu = $data['ibu'];
-        // $beer->srm = $data['srm'];
-        // $beer->image = $data['url'];
-
         $beer->save();
+        $beerOrdered = Beer::orderBy('id', 'desc')->first();
 
-        $beerStored = Beer::orderBy('id', 'desc')->first();
-
-        return redirect()->route('beers.index', $beerStored);
+        return redirect()->route('beers.index', $beerOrdered);
     }
 
     // /**

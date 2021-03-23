@@ -14,6 +14,10 @@
 
   <body>
 
+    {{-- <header>
+        <h1>Title</h1>
+    </header> --}}
+
     <div class="container">
 
         @yield('content')
