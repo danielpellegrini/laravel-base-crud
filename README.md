@@ -13,11 +13,11 @@ select HTTPS on gitHub
 
     git init
 
-    git remote add origin <select the complete string on gitHub>
+    git remote add origin 
 
     git add .
 
-    git commit -am initial commit  (a= add m= message)
+    git commit -am initial commit 
 
     git push --set-upstream origin main
 
@@ -49,7 +49,7 @@ then
 
 then
 
-    php artisan ui bootstrap <- updating dependencies
+    php artisan ui bootstrap --auth <- updating dependencies and creating authorization
 
 then
 
@@ -57,8 +57,8 @@ then
 
 then
 
-    open .blade.php file and add:
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    open resources/views/layouts/ app.blade.php file and check if it's present:
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 --------------------------------------------------------------------
 
