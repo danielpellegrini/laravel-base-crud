@@ -119,13 +119,21 @@ Open your database in phpMyAdmin then select SQL and create a new (or more) quer
 
             public function up()
     {
-        Schema::create('dbName', function (Blueprint $table) {
+        Schema::create('tableName', function (Blueprint $table) {
             $table->id();
             $table->string('item_1', 45)->default(value);
             $table->string('item_2', 45)->required();
             $table->timestamps();
         });
     }
+
+then run
+
+    php artisan migrate
+
+if you need to update or add a table run:
+
+    php artisan migrate:refresh
 
 
 --------------------------------------------------------------------
@@ -135,7 +143,7 @@ Open your database in phpMyAdmin then select SQL and create a new (or more) quer
 
 then add to root/app/model
 
-    protected $table = 'tableName'; <singular>   
+    protected $table = 'tableName'; <singular>  with this you can choose the correct singular table name, but you can omit it if you prefer to let Laravel chooses the plural and singular name
     
     protected $fillable =
     [
@@ -162,7 +170,7 @@ then
 --------------------------------------------------------------------
 ## SETTING CONTROLLER (root/app/Http/Controllers)
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
     use App\ModelName;   <- add this
 
@@ -184,7 +192,7 @@ namespace App\Http\Controllers;
 
 add into resources/views
 
-        folderIntoView
+        items <-  you'll put inside this folder any .blade.php file related to the project
 
 create a function to validate the form at the end, before 'destroy'.
 
